@@ -17,9 +17,9 @@
         <div class="nav-links" aria-label="Page sections">
           <a href="#demo">Demo</a>
           <a href="#results">Results</a>
-          <a href="#code">Code</a>
+          <a href="#code">Links</a>
+          <a href="https://listeningtech.lab.uic.edu/">Lab</a>
           <a href="docs/IWAENC2026_Rajesh.pdf">Paper</a>
-          <a href="code/">Source</a>
         </div>
       </nav>
     </header>
@@ -33,6 +33,10 @@
             Four table-mounted microphones each keep their local talkers while
             suppressing speech from other tables, background music, and ambient noise.
           </p>
+          <div class="hero-actions" aria-label="Primary links">
+            <a href="#demo">Try the demo</a>
+            <a href="https://listeningtech.lab.uic.edu/">Listening Technology Lab</a>
+          </div>
         </div>
       </section>
 
@@ -52,22 +56,46 @@
               <line x1="26" y1="70" x2="74" y2="70"></line>
             </svg>
             <button class="table-node active" style="--x:26; --y:31" data-node="0" aria-pressed="true">
-              <span class="table-top"></span>
+              <span class="dining-set" aria-hidden="true">
+                <span class="person person-a"></span>
+                <span class="person person-b"></span>
+                <span class="person person-c"></span>
+                <span class="table-top"></span>
+                <span class="mic-dot"></span>
+              </span>
               <span class="node-id">Node 1</span>
               <span class="node-caption">local target</span>
             </button>
             <button class="table-node" style="--x:74; --y:31" data-node="1" aria-pressed="false">
-              <span class="table-top"></span>
+              <span class="dining-set" aria-hidden="true">
+                <span class="person person-a"></span>
+                <span class="person person-b"></span>
+                <span class="person person-c"></span>
+                <span class="table-top"></span>
+                <span class="mic-dot"></span>
+              </span>
               <span class="node-id">Node 2</span>
               <span class="node-caption">interferer</span>
             </button>
             <button class="table-node" style="--x:26; --y:70" data-node="2" aria-pressed="false">
-              <span class="table-top"></span>
+              <span class="dining-set" aria-hidden="true">
+                <span class="person person-a"></span>
+                <span class="person person-b"></span>
+                <span class="person person-c"></span>
+                <span class="table-top"></span>
+                <span class="mic-dot"></span>
+              </span>
               <span class="node-id">Node 3</span>
               <span class="node-caption">interferer</span>
             </button>
             <button class="table-node" style="--x:74; --y:70" data-node="3" aria-pressed="false">
-              <span class="table-top"></span>
+              <span class="dining-set" aria-hidden="true">
+                <span class="person person-a"></span>
+                <span class="person person-b"></span>
+                <span class="person person-c"></span>
+                <span class="table-top"></span>
+                <span class="mic-dot"></span>
+              </span>
               <span class="node-id">Node 4</span>
               <span class="node-caption">interferer</span>
             </button>
@@ -131,25 +159,19 @@
       <section class="code-section" id="code">
         <div class="section-title">
           <p class="eyebrow">Reproducibility</p>
-          <h2>Code and artifacts</h2>
+          <h2>Project links</h2>
         </div>
         <div class="code-grid">
-          <a href="code/train_graph_cirm_v10.py">cIRM neighbourhood training</a>
-          <a href="code/train_graph_alltoall_v10.py">cIRM fully shared training</a>
-          <a href="code/eval_graph_cirm_v10.py">cIRM evaluation</a>
-          <a href="code/generate_restaurant_dataset_v6_graph_required.py">dataset generation</a>
-          <a href="code/plot_bandwidth_tradeoff.py">bandwidth tradeoff plotting</a>
-          <a href="code/run_k6_cirm_pilot.sh">K=6 pilot runner</a>
-          <a href="docs/IWAENC2026_Rajesh.pdf">accepted paper PDF</a>
+          <a href="https://github.com/listeningtech/restaurant_asn/tree/main/code">Codes</a>
+          <a href="docs/IWAENC2026_Rajesh.pdf">Paper</a>
+          <a href="https://listeningtech.lab.uic.edu/news-stories/cooperative-node-specific-speech-enhancement-in-resource-constrained-acoustic-sensor-networks/">Blog</a>
+          <a href="https://listeningtech.lab.uic.edu/">Listening Technology Lab</a>
         </div>
       </section>
     </main>
 
     <footer>
-      <p>
-        Rajesh R, Rashen Fernando, Yuezhong Xu, and Ryan M. Corey,
-        University of Illinois Chicago.
-      </p>
+      <p>Listening Technology Lab, University of Illinois Chicago</p>
     </footer>
 
     <script src="script.js"></script>
