@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restaurant ASN Demo</title>
+    <meta
+      name="description"
+      content="Interactive demo for cooperative node-specific speech enhancement in restaurant acoustic sensor networks."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="brand" href="#demo">Restaurant ASN</a>
+        <div class="nav-links" aria-label="Page sections">
+          <a href="#demo">Demo</a>
+          <a href="#results">Results</a>
+          <a href="#code">Code</a>
+          <a href="docs/IWAENC2026_Rajesh.pdf">Paper</a>
+          <a href="code/">Source</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="demo">
+        <div class="hero-copy">
+          <p class="eyebrow">IWAENC 2026 accepted paper demo</p>
+          <h1>Cooperative node-specific speech enhancement in a noisy restaurant</h1>
+          <p>
+            Four table-mounted microphones each keep their local talkers while
+            suppressing speech from other tables, background music, and ambient noise.
+          </p>
+        </div>
+      </section>
+
+      <section class="demo-grid" aria-label="Interactive restaurant demo">
+        <div class="floorplan-panel">
+          <div class="section-title">
+            <p class="eyebrow">Scene 0</p>
+            <h2>Restaurant layout</h2>
+          </div>
+          <div class="floorplan" aria-label="Restaurant floorplan with four acoustic sensor nodes">
+            <div class="stage-label music">background music</div>
+            <div class="stage-label noise">ambient noise</div>
+            <svg class="links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="26" y1="31" x2="74" y2="31"></line>
+              <line x1="26" y1="31" x2="26" y2="70"></line>
+              <line x1="74" y1="31" x2="74" y2="70"></line>
+              <line x1="26" y1="70" x2="74" y2="70"></line>
+            </svg>
+            <button class="table-node active" style="--x:26; --y:31" data-node="0" aria-pressed="true">
+              <span class="table-top"></span>
+              <span class="node-id">Node 1</span>
+              <span class="node-caption">local target</span>
+            </button>
+            <button class="table-node" style="--x:74; --y:31" data-node="1" aria-pressed="false">
+              <span class="table-top"></span>
+              <span class="node-id">Node 2</span>
+              <span class="node-caption">interferer</span>
+            </button>
+            <button class="table-node" style="--x:26; --y:70" data-node="2" aria-pressed="false">
+              <span class="table-top"></span>
+              <span class="node-id">Node 3</span>
+              <span class="node-caption">interferer</span>
+            </button>
+            <button class="table-node" style="--x:74; --y:70" data-node="3" aria-pressed="false">
+              <span class="table-top"></span>
+              <span class="node-id">Node 4</span>
+              <span class="node-caption">interferer</span>
+            </button>
+          </div>
+          <p class="layout-note">
+            Select a node to hear what that microphone observes, its clean local target,
+            and the enhanced output from the cooperative model.
+          </p>
+        </div>
+
+        <div class="audio-panel">
+          <div class="section-title">
+            <p class="eyebrow">Selected node</p>
+            <h2 id="node-title">Node 1</h2>
+          </div>
+
+          <div class="meters" aria-label="Node summary">
+            <div>
+              <span>Target</span>
+              <strong>local table speech</strong>
+            </div>
+            <div>
+              <span>Interference</span>
+              <strong>other tables + noise</strong>
+            </div>
+            <div>
+              <span>Output</span>
+              <strong>enhanced local speech</strong>
+            </div>
+          </div>
+
+          <div class="tracks" id="tracks"></div>
+        </div>
+      </section>
+
+      <section class="results" id="results">
+        <div class="section-title">
+          <p class="eyebrow">Paper results</p>
+          <h2>Cross-node cooperation helps most in adverse scenes</h2>
+        </div>
+        <div class="result-grid">
+          <figure>
+            <img src="assets/figures/graph_gain.png" alt="Graph gain versus acoustic difficulty">
+            <figcaption>Cooperation gain increases as acoustic difficulty rises.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/enhancement_gain.png" alt="Enhancement gain versus input quality">
+            <figcaption>Cooperative models preserve a larger margin at low input SI-SDR.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/bandwidth_tradeoff.png" alt="Communication bandwidth tradeoff">
+            <figcaption>Higher communication cost gives larger SI-SDR gains.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/figures/architecture.png" alt="Network architecture diagram">
+            <figcaption>Input-level log-magnitude sharing and bottleneck graph conditioning.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="code-section" id="code">
+        <div class="section-title">
+          <p class="eyebrow">Reproducibility</p>
+          <h2>Code and artifacts</h2>
+        </div>
+        <div class="code-grid">
+          <a href="code/train_graph_cirm_v10.py">cIRM neighbourhood training</a>
+          <a href="code/train_graph_alltoall_v10.py">cIRM fully shared training</a>
+          <a href="code/eval_graph_cirm_v10.py">cIRM evaluation</a>
+          <a href="code/generate_restaurant_dataset_v6_graph_required.py">dataset generation</a>
+          <a href="code/plot_bandwidth_tradeoff.py">bandwidth tradeoff plotting</a>
+          <a href="code/run_k6_cirm_pilot.sh">K=6 pilot runner</a>
+          <a href="docs/IWAENC2026_Rajesh.pdf">accepted paper PDF</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Rajesh R, Rashen Fernando, Yuezhong Xu, and Ryan M. Corey,
+        University of Illinois Chicago.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
